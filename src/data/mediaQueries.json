@@ -1,12 +1,28 @@
 {
   "mediaQueries": {
-    "SMALL": "(min-width: 480px)",
-    "MEDIUM": "(min-width: 768px)",
-    "LARGE": "(min-width: 1024px)"
+    "max375": "(max-width: 374px)",
+    "min375": "(min-width: 375px)",
+    "min410": "(min-width: 410px)",
+    "min480": "(min-width: 480px)",
+    "min640": "(min-width: 640px)",
+    "min768": "(min-width: 768px)",
+    "min1024": "(min-width: 1024px)",
+    "min1240": "(min-width: 1240px)",
+    "min1400": "(min-width: 1400px)",
+    "min1600": " (min-width: 1600px)",
+    "min1920": " (min-width: 1920px)"
   },
   "deviceState": {
-    "SMALL": 0,
-    "MEDIUM": 1,
-    "LARGE": 2
+    "max375": 0,
+    "min375": 1,
+    "min410": 2,
+    "min480": 3,
+    "min640": 4,
+    "min768": 5,
+    "min1024": 6,
+    "min1240": 7,
+    "min1400": 8,
+    "min1600": 9,
+    "min1920": 10
   }
 }

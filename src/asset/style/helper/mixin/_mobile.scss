@@ -1,0 +1,6 @@
+@mixin mobile {
+  html[data-device='mobile'] &,
+  html[data-device='tablet'] & {
+    @content;
+  }
+}

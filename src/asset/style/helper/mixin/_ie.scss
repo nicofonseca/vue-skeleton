@@ -1,0 +1,5 @@
+@mixin ie {
+  html[data-browser='IE'] & {
+    @content;
+  }
+}

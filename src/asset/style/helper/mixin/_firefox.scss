@@ -1,0 +1,5 @@
+@mixin firefox {
+  html[data-browser='Firefox'] & {
+    @content;
+  }
+}

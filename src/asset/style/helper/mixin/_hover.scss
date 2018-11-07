@@ -1,0 +1,7 @@
+@mixin hover {
+  html[data-device='desktop'] & {
+    &:hover {
+      @content;
+    }
+  }
+}

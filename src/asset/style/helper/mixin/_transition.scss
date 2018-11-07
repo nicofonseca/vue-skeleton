@@ -1,0 +1,15 @@
+/**
+ * Transition
+ *
+ * @param {string} $prop
+ * @param {duration} $duration (0.75s)
+ * @param {duration} $delay (0s)
+ * @param {ease} $ease ($easeInOutCubic)
+ */
+
+@mixin transition($prop, $duration: 0.75s, $delay: 0s, $ease: $easeInOutCubic) {
+  transition-duration: #{$duration};
+  transition-property: #{$prop};
+  transition-delay: #{$delay};
+  transition-timing-function: $ease;
+}

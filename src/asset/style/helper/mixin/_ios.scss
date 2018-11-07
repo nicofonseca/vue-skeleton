@@ -1,0 +1,6 @@
+@mixin ios {
+  html[data-os='macOS'] &,
+  html[data-os='iOS'] & {
+    @content;
+  }
+}

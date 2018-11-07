@@ -1,0 +1,5 @@
+@mixin chrome {
+  html[data-browser='Chrome'] & {
+    @content;
+  }
+}

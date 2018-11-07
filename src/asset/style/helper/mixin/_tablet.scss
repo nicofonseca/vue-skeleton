@@ -1,0 +1,5 @@
+@mixin tablet {
+  html[data-device='tablet'] & {
+    @content;
+  }
+}

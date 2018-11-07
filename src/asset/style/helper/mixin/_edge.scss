@@ -1,0 +1,5 @@
+@mixin edge {
+  html[data-browser='Edge'] & {
+    @content;
+  }
+}

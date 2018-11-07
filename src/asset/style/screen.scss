@@ -1,3 +1,4 @@
-@import '~normalize.css';
-
-@import 'layout/base';
+@import 'helper/normalize-base';
+@import 'vendor/main';
+@import 'typo/main';
+@import 'base/main';

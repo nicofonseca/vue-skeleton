@@ -1,0 +1,5 @@
+@mixin phone {
+  html[data-device='mobile'] & {
+    @content;
+  }
+}
