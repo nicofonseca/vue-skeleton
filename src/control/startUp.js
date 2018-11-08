@@ -10,9 +10,16 @@ import { getValue } from '../util/injector';
 import { CONFIG_MANAGER, GATEWAY } from '../data/Injectables';
 import localeLoader from '../util/localeLoader';
 import { mediaQueries, deviceState } from '../data/mediaQueries.json';
+import bowser from '../util/bowser';
 
 const initPlugins = () => {
   const configManager = getValue(CONFIG_MANAGER);
+
+  document.documentElement.setAttribute('data-browser', bowser.browser.name);
+  document.documentElement.setAttribute('data-browserVersion', bowser.browser.version);
+  document.documentElement.setAttribute('data-device', bowser.platform.type);
+  document.documentElement.setAttribute('data-os', bowser.os.name);
+  document.documentElement.setAttribute('data-env', process.env.NODE_ENV);
 
   const cleanMediaQueries = Object.keys(mediaQueries).reduce((result, key) => {
     result[key] = mediaQueries[key].replace(/'/g, '');
@@ -24,6 +31,12 @@ const initPlugins = () => {
     $config: configManager,
     $gateway: getValue(GATEWAY),
     $http: axios,
+    $isTablet: bowser.platform.type === 'tablet',
+    $isMobile: bowser.platform.type === 'mobile',
+    $isDesktop: bowser.platform.type === 'desktop',
+    $browser: bowser.browser.name,
+    $browserVersion: bowser.browser.version,
+    $os: bowser.os.name,
     $versionRoot: configManager.getVariable(VariableNames.VERSIONED_STATIC_ROOT),
     $staticRoot: configManager.getVariable(VariableNames.STATIC_ROOT),
     URLNames,
