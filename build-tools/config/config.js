@@ -10,7 +10,7 @@ loading any script in your HTML.
  */
 let publicPath = '/';
 
-if(argv.publicPath){
+if (argv.publicPath) {
   publicPath = argv.publicPath;
 }
 
@@ -30,34 +30,41 @@ yarn build -- --versionNumber=v1
  */
 let version = new Date().getTime();
 
-if(argv.versionNumber){
+if (argv.versionNumber) {
   version = argv.versionNumber;
 }
 
-const versionPath = 'version/' + version + '/';
+const versionPath = `version/${version}/`;
 
 let analyze = false;
 
-if(argv.analyze){
+if (argv.analyze) {
   analyze = true;
+}
+
+let domain = 'http://localhost/';
+
+if (argv.domain) {
+  domain = argv.domain;
 }
 
 module.exports = {
   build: {
     env: {
       NODE_ENV: JSON.stringify('production'),
-      VERSIONED_STATIC_ROOT: JSON.stringify(versionPath + 'static/'),
+      VERSIONED_STATIC_ROOT: JSON.stringify(`${versionPath}static/`),
       STATIC_ROOT: JSON.stringify(''),
       PUBLIC_PATH: JSON.stringify(publicPath),
     },
     index: path.resolve(__dirname, '../../dist/index.html'),
-    versionPath: versionPath,
-    publicPath: publicPath,
+    versionPath,
+    publicPath,
     enableImageOptimization: true,
     enablePNGQuant: true, // Best PNG optimizer but PNGQuant crashes on some images so use with caution.
     pngQuantQuality: '65',
-    generateIcons: false, // generates icons for all platforms with favicon.png from static/image/favicon.png as the source image
-    analyze: analyze
+    generateIcons: true, // generates icons for all platforms with favicon.png from static/image/favicon.png as the source image
+    analyze,
+    domain,
   },
   dev: {
     env: {
@@ -69,6 +76,7 @@ module.exports = {
     port: 8080,
     proxyTable: {},
     autoOpenBrowser: true,
+    domain,
   },
   useHttps: false,
   lintStaged: {

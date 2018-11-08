@@ -137,6 +137,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         collapseWhitespace: true,
         removeAttributeQuotes: false,
       },
+      domain: config.build.domain,
       chunksSortMode: 'dependency',
     }),
     new ImageminPlugin({

@@ -114,6 +114,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       version: '/',
       inject: true,
       cache: true,
+      domain: config.dev.domain,
     }),
     new CopyWebpackPlugin([
       {
