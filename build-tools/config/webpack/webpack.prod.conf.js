@@ -1,19 +1,19 @@
 const path = require('path');
-const config = require('../../config/config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const webpackHelpers = require('./webpackHelpers');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const webpackHelpers = require('./webpackHelpers');
+const baseWebpackConfig = require('./webpack.base.conf');
+const config = require('../../config/config');
 
 const env = config.build.env;
 const projectRoot = path.resolve(__dirname, '../../../');
@@ -51,6 +51,30 @@ const webpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
+        test: /\.(mp4|webm|ogg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: path.posix.join(config.build.versionPath, 'video/[name].[hash:7].[ext]'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp3)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: path.posix.join(config.build.versionPath, 'audio/[name].[hash:7].[ext]'),
+            },
+          },
+        ],
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         use: [
           {
@@ -66,8 +90,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: false,
   output: {
-    filename: path.posix.join('', config.build.versionPath + 'js/[name].js'),
-    chunkFilename: path.posix.join('', config.build.versionPath + 'js/[id].js'),
+    filename: path.posix.join('', `${config.build.versionPath}js/[name].js`),
+    chunkFilename: path.posix.join('', `${config.build.versionPath}js/[id].js`),
     publicPath: config.build.publicPath,
   },
   optimization: {
@@ -96,9 +120,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       cssProcessorOptions: {
         parser: require('postcss-safe-parser'),
         discardComments: {
-          removeAll: true
-        }
-      }
+          removeAll: true,
+        },
+      },
     }),
     new MiniCssExtractPlugin({
       filename: path.posix.join(config.build.versionPath, 'css/[name].css'),
@@ -127,7 +151,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: 'static',
-        to: config.build.versionPath + 'static',
+        to: `${config.build.versionPath}static`,
         ignore: ['.gitkeep'],
       },
     ]),
@@ -149,7 +173,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       ? [
           new FaviconsWebpackPlugin({
             logo: path.join(projectRoot, './static/image/favicon.png'),
-            prefix: config.build.versionPath + 'static/favicon/',
+            prefix: `${config.build.versionPath}static/favicon/`,
             emitStats: false,
             persistentCache: false,
             inject: true,
