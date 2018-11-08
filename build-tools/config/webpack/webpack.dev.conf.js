@@ -1,15 +1,15 @@
-const config = require('../../config/config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
-const webpackHelpers = require('./webpackHelpers');
 const detectPort = require('detect-port');
 const opn = require('opn');
+const webpackHelpers = require('./webpackHelpers');
+const baseWebpackConfig = require('./webpack.base.conf');
+const config = require('../../config/config');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -39,6 +39,30 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             options: {
               limit: 10000,
               name: path.posix.join('', 'image/[name].[hash:7].[ext]'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp4|webm|ogg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: path.posix.join('', 'video/[name].[hash:7].[ext]'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp3)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: path.posix.join('', 'audio/[name].[hash:7].[ext]'),
             },
           },
         ],
@@ -108,7 +132,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
-module.exports = detectPort(devWebpackConfig.devServer.port).then(function(port) {
+module.exports = detectPort(devWebpackConfig.devServer.port).then(port => {
   process.env.PORT = port;
   devWebpackConfig.devServer.port = port;
 
