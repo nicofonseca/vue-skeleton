@@ -1738,6 +1738,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
+bowser@^2.0.0-beta.3:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-2.2.0.tgz#acff2606ef513a5f55657284ad81e555902c29d6"
+  integrity sha512-5flcHjBFWx/ASfXcJHKA768HSSg+pIMaHPjuEdr6/rrQNu4s6/5KV4PoOk7jdTe6nMTY68+LI9UhqooI7VlBOw==
+
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"

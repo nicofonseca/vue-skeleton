@@ -91,40 +91,11 @@ module.exports = {
       STATIC_ROOT: JSON.stringify(''),
       PUBLIC_PATH: JSON.stringify(publicPath),
     },
-<<<<<<< HEAD
-    index: path.resolve(__dirname, '../../dist/index.html'),
-    versionPath,
-    publicPath,
-    enableImageOptimization: true,
-    enablePNGQuant: true, // Best PNG optimizer but PNGQuant crashes on some images so use with caution.
-    pngQuantQuality: '65',
-    generateIcons: true, // generates icons for all platforms with favicon.png from static/image/favicon.png as the source image
-    analyze,
-    domain,
-  },
-  dev: {
-    env: {
-=======
     [buildTypes.DEVELOPMENT]: {
->>>>>>> master
       NODE_ENV: JSON.stringify('development'),
       VERSIONED_STATIC_ROOT: JSON.stringify('static/'),
       STATIC_ROOT: JSON.stringify(''),
       PUBLIC_PATH: JSON.stringify('/'),
-<<<<<<< HEAD
-    },
-    port: 8080,
-    proxyTable: {},
-    autoOpenBrowser: true,
-    domain,
-  },
-  useHttps: false,
-  lintStaged: {
-    eslintEnabled: true,
-    tslintEnabled: true,
-    stylelintEnabled: true,
-=======
     }
->>>>>>> master
   },
 };
