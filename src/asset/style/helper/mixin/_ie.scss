@@ -1,5 +1,5 @@
 @mixin ie {
-  html[data-browser='IE'] & {
+  html[data-browser='Internet Explorer'] & {
     @content;
   }
 }
