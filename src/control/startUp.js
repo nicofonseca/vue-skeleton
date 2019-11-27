@@ -11,6 +11,7 @@ import { CONFIG_MANAGER, GATEWAY } from '../data/Injectables';
 import localeLoader from '../util/localeLoader';
 import { mediaQueries, deviceState } from '../data/mediaQueries.json';
 import bowser from '../util/bowser';
+import waitForStyleSheetsLoaded from '../util/waitForStyleSheetsLoaded';
 
 const initPlugins = () => {
   const configManager = getValue(CONFIG_MANAGER);
@@ -78,6 +79,7 @@ const startUp = store => {
     configManager.getVariable(VariableNames.LOCALE_ENABLED)
       ? waitForLocale(store)
       : Promise.resolve(),
+    process.env.NODE_ENV !== 'production' ? waitForStyleSheetsLoaded(document) : Promise.resolve(),
   ]);
 };
 

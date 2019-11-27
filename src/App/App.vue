@@ -3,6 +3,6 @@
 
 <template>
   <div :class="$style.app">
-    <router-view :class="$style.page"/>
+    <router-view :class="$style.page" />
   </div>
 </template>

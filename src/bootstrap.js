@@ -60,4 +60,6 @@ const app = new Vue({
 });
 
 // Mount the app after startUp
-startUp(store).then(() => app.$mount('#app'));
+startUp(store).then(() => {
+  app.$mount('#app');
+});
