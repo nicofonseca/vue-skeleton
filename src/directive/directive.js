@@ -1,2 +1,4 @@
 // add directives you want to register globally
-export default {};
+import nativeInnerScroll from './nativeInnerScroll';
+
+export default { nativeInnerScroll };
