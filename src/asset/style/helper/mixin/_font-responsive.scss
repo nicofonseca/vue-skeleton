@@ -7,7 +7,7 @@
  * @param {number} $maxViewport - Max viewport size
  */
 
-@mixin fontResponsive($minFontSize, $maxFontSize, $minViewport, $maxViewport) {
+@mixin font-responsive($minFontSize, $maxFontSize, $minViewport, $maxViewport) {
   $cleanMinFont: strip-unit($minFontSize);
   $cleanMaxFont: strip-unit($maxFontSize);
   $cleanMinViewport: strip-unit($minViewport);
