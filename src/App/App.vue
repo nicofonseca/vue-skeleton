@@ -3,6 +3,7 @@
 
 <template>
   <div :class="$style.app">
+    <Grid v-if="env === 'development'"/>
     <router-view :class="$style.page" />
   </div>
 </template>

@@ -1,0 +1,17 @@
+$column-gutter: 8px;
+$column-gutter-1024: 16px;
+
+@mixin column($columnsWanted, $total: 12) {
+  $columnsTotal: $total;
+  $percentage: (($columnsWanted / $columnsTotal) * 100) * 1%;
+  $offset: (strip-unit($column-gutter) / $columnsTotal) * ($columnsTotal - $columnsWanted) + px;
+  @if $columnsWanted != $columnsTotal {
+    max-width: calc(#{$percentage} - #{$offset});
+  }
+
+  @media screen and (min-width: 1024px) {
+    $offset: (strip-unit($column-gutter-1024) / $columnsTotal) * ($columnsTotal - $columnsWanted) +
+      px;
+    max-width: calc(#{$percentage} - #{$offset});
+  }
+}
