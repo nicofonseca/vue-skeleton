@@ -3,7 +3,7 @@
  *
  * Uses the @content styles within the mixin as stytes
  */
-@mixin input-placeholder {
+@mixin placeholder {
   &.placeholder {
     @content;
   }
