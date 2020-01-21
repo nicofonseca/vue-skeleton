@@ -10,5 +10,5 @@ body {
 }
 
 .center-wrapper {
-  @include column-max-widt();
+  @include column-max-width();
 }
